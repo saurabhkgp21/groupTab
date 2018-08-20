@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+
+  "name" :"groupTabs",
+  "version" :"1.1.0",
+  "description" :"Group tabs of same website.",
+
+  "author": {
+      "name": "Saurabh Agarwal",
+      "email": "shourabh.agarwal@gmail.com" },
+
+  "permissions": ["tabs" ],
+  "background": {
+    "scripts": ["rearrange.js"],
+    "persistent": false
+  }
+}
