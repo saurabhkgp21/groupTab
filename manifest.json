@@ -13,5 +13,12 @@
   "background": {
     "scripts": ["rearrange.js"],
     "persistent": false
+  },
+  "browser_action": {},
+  "commands": {
+    "rearrange":{
+      "suggested_key": {"default": "Ctrl+Y"},
+      "description": "Rearrange tabs"
+    }
   }
 }

@@ -1,7 +1,5 @@
-var tabInfo = [];
-var bkg = chrome.extension.getBackgroundPage();
-
 var getTabsInfo = function getInfo(tabs){
+	var tabInfo = [];
 	for (var i = 0; i < tabs.length; i++) {
 		var link = document.createElement('a')
 		link.href = tabs[i].url;
@@ -27,10 +25,20 @@ var getTabsInfo = function getInfo(tabs){
 	for(var i=0;i<tabInfo.length;i++){
 		for(var j=0;j<tabInfo[i]['tab'].length;j++){
 			chrome.tabs.move(tabInfo[i]['tab'][j],{index:currIndex});
-			bkg.console.log(tabInfo[i]['url'],currIndex);
 			currIndex++;
 		}
 	}
 }
 
-chrome.tabs.getAllInWindow(callback=getTabsInfo);
+
+
+
+chrome.commands.onCommand.addListener(function(command) {
+	if(command=="rearrange"){
+		chrome.tabs.getAllInWindow(callback=getTabsInfo);
+	}
+});
+
+chrome.browserAction.onClicked.addListener(function(tab) {
+	chrome.tabs.getAllInWindow(callback=getTabsInfo);
+});
